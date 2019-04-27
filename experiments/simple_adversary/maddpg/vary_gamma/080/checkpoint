@@ -1,0 +1,2 @@
+model_checkpoint_path: "gamma"
+all_model_checkpoint_paths: "gamma"
