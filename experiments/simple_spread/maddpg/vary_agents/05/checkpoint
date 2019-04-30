@@ -1,0 +1,2 @@
+model_checkpoint_path: "spread_maddpg_ma"
+all_model_checkpoint_paths: "spread_maddpg_ma"
