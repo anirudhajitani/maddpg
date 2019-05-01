@@ -97,7 +97,15 @@ has been provided), but does not continue training (default: `False`)
 
 - `./maddpg/common/tf_util.py`: useful tensorflow functions used in `maddpg.py`
 
+## Experiment Results
 
+The plots and results of the expremients can present in the Plots dir
+Plots starting with Adv_Agent are for Simple Adversary (Rewards for reward plot, Success for success plot)
+Plots starting with Agent_ are for Simple Spread
+
+## Data and Videos
+
+The pickled reward data and videos of the experiments after every 1000 timesteps are present in the experiments/simple_spread and experiments/simple_adversary directories
 
 ## Paper citation
 
