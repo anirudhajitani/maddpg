@@ -19,6 +19,7 @@ def parse_args():
     parser.add_argument("--max-episode-len", type=int, default=25, help="maximum episode length")
     parser.add_argument("--num-episodes", type=int, default=50000, help="number of episodes")
     parser.add_argument("--num-adversaries", type=int, default=0, help="number of adversaries")
+    parser.add_argument("--num-agents", type=int, default=3, help="number of agents")
     parser.add_argument("--good-policy", type=str, default="maddpg", help="policy for good agents")
     parser.add_argument("--adv-policy", type=str, default="maddpg", help="policy of adversaries")
     # Core training parameters
@@ -26,6 +27,8 @@ def parse_args():
     parser.add_argument("--gamma", type=float, default=0.95, help="discount factor")
     parser.add_argument("--batch-size", type=int, default=1024, help="number of episodes to optimize at the same time")
     parser.add_argument("--num-units", type=int, default=64, help="number of units in the mlp")
+    parser.add_argument("--update-step", type=int, default=100, help="timestep when policy should be updated")
+    parser.add_argument("--replay-size", type=int, default=1000000, help="size of replay buffer")
     # Checkpointing
     parser.add_argument("--exp-name", type=str, default="exp_name", help="name of the experiment")
     parser.add_argument("--save-dir", type=str, default="", help="directory in which training state and model should be saved")
@@ -55,7 +58,7 @@ def make_env(scenario_name, arglist, benchmark=False):
     # load scenario from script
     scenario = scenarios.load(scenario_name + ".py").Scenario()
     # create world
-    world = scenario.make_world()
+    world = scenario.make_world(arglist.num_agents, arglist.num_adversaries)
     # create multiagent environment
     if benchmark:
         env = MultiAgentEnv(world, scenario.reset_world, scenario.reward, scenario.observation, scenario.benchmark_data)
