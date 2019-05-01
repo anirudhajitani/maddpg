@@ -106,6 +106,8 @@ Plots starting with Agent_ are for Simple Spread
 ## Data and Videos
 
 The pickled reward data and videos of the experiments after every 1000 timesteps are present in the experiments/simple_spread and experiments/simple_adversary directories
+The experiments/plot_rewards contains code for plotting the graphs in Plots directory
+experiments/run.sh is a script to run different experiments and store them in the desired location
 
 ## Paper citation
 
